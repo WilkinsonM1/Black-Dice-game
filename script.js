@@ -13,7 +13,7 @@ const submit = () => {
     console.log(playerNumber.value) 
     let player = document.createElement("div") 
     player.innerHTML = "player 3"
-    document.body.gameField.appendChild(player)
+    document.body.appendChild(player)
 }
     else {
         playerNumber.value = "Please type a number"
