@@ -23,15 +23,21 @@ body {
     width:100%;
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 #game-field {
     height: 50%;
     width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
 }
 
+
+
 #input-container {
-    display: none;
+    display: block;
 }
 
 
