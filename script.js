@@ -9,6 +9,7 @@ const gameStart = () => {
     
 }
 
+
 const submit = () => {
     if(playerNumber.value > 0){
 
@@ -19,12 +20,15 @@ const submit = () => {
 
     let player = document.createElement("div") 
     let playerTitle = document.createElement("h3")
-    playerTitle.innerHTML = `Player ${i}`
+    
     let playerScore = document.createElement("p")
-    playerScore.innerHTML = "0"
+    
     let divImage = document.createElement("div") 
     let diceImage = document.createElement("img")
     let rollBtn = document.createElement("button")
+    playerTitle.innerHTML = `Player ${i}`
+    playerScore.innerHTML = "0"
+    let score = Number(playerScore.innerHTML)
     rollBtn.innerHTML = "Roll"
     
     gameField.appendChild(player)
@@ -37,8 +41,57 @@ const submit = () => {
   
 
     player.id = `player-${i}`
+    playerScore.className = "score"
+    diceImage.className = "dice-image"
+    rollBtn.className = "roll-button"
+    
+    diceImage.id = `player-${i}-die`
+    rollBtn.id = `player-${i}-button`
+    playerScore.id = `plater-${i}-score`
+    
+    const roll = () => {
+
+            console.log("works fine mate")
+                if (Math.random() < 0.17){
+    diceImage.src = "./img/dice1.png"
+}
+else if (Math.random() < 0.33){
+    diceImage.src = "./img/dice2.png"
+ }
+ else if (Math.random() < 0.5){
+    diceImage.src = "./img/dice3.png"
+ }
+ else if (Math.random() < 0.67){
+    diceImage.src = "./img/dice4.png"
+ }
+ else if (Math.random() < 0.83){
+    diceImage.src = "./img/dice5.png"
+ }
+ else if (Math.random() < 1){
+    diceImage.src = "./img/dice6.png"
+ }
+
+   } 
+    
+   rollBtn.addEventListener("click", roll)
+
+   
+
+   const scoreTracker = () => {
+    console.log("the scoreTracker works too")
+       
+    if(diceImage.id.src == "./img/dice1.png"){  score = score +1 
+        
+   }
+
+  
+   }
+
+
+   rollBtn.addEventListener("click", scoreTracker)
     
         }
+       
 }
     else {
         playerNumber.value = "Please type a number"
@@ -61,5 +114,10 @@ window.addEventListener("keypress", () => {
 playerNumber.addEventListener("click", () => {
     playerNumber.value = ""
 })
+
+
+
+
+
 
 
