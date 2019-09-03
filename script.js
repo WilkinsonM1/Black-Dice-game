@@ -2,6 +2,7 @@ let inputContainer = document.getElementById("input-container")
 let playerNumber = document.getElementById("player-number")
 let gameField = document.getElementById("game-field")
 
+
 const gameStart = () => {
     document.location.reload()
     inputContainer.style.display = "block";
@@ -52,24 +53,11 @@ const submit = () => {
     const roll = () => {
 
             console.log("works fine mate")
-                if (Math.random() < 0.17){
-    diceImage.src = "./img/dice1.png"
-}
-else if (Math.random() < 0.33){
-    diceImage.src = "./img/dice2.png"
- }
- else if (Math.random() < 0.5){
-    diceImage.src = "./img/dice3.png"
- }
- else if (Math.random() < 0.67){
-    diceImage.src = "./img/dice4.png"
- }
- else if (Math.random() < 0.83){
-    diceImage.src = "./img/dice5.png"
- }
- else if (Math.random() < 1){
-    diceImage.src = "./img/dice6.png"
- }
+            let random = Math.floor(Math.random()*6)
+            let images = [`dice1.png`, `dice2.png`,`dice3.png`, `dice4.png`,`dice5.png`, `dice6.png` ]
+            diceImage.src  = `./img/${images[random]}`
+            playerScore.innerHTML = random+1
+  
 
    } 
     
