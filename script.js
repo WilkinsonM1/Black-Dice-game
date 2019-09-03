@@ -1,6 +1,7 @@
 let inputContainer = document.getElementById("input-container")
 let playerNumber = document.getElementById("player-number")
 let gameField = document.getElementById("game-field")
+let turn = 1
 
 
 const gameStart = () => {
@@ -48,35 +49,78 @@ const submit = () => {
     
     diceImage.id = `player-${i}-die`
     rollBtn.id = `player-${i}-button`
-    playerScore.id = `plater-${i}-score`
+    playerScore.id = `player-${i}-score`
+    
+
     
     const roll = () => {
 
-            console.log("works fine mate")
+            
             let random = Math.floor(Math.random()*6)
             let images = [`dice1.png`, `dice2.png`,`dice3.png`, `dice4.png`,`dice5.png`, `dice6.png` ]
             diceImage.src  = `./img/${images[random]}`
-            playerScore.innerHTML = random+1
-  
+
+            if( random != 0){
+            playerScore.innerHTML = random+1 + Number(playerScore.innerHTML)
+               
+            console.log(turn) 
+            
+            
+            // document.getElementById(`player-${turn}`).disabled = false
+
+
+            if(turn < playerNumber.value ){
+                
+                 
+                        document.getElementById(`player-${turn}-button`).disabled = true 
+                        document.getElementById(`player-${turn+1}-button`).disabled = false 
+                        turn = turn + 1 
+                       
+                       
+                    } else { 
+                        document.getElementById(`player-${turn}-button`).disabled = true 
+                        turn = 1
+                        document.getElementById(`player-${turn}-button`).disabled = false 
+                    
+                    }
+                     
+                   
+                
+                    
+                    } else  {console.log(`Player ${turn} has lost`)
+                    document.getElementById(`player-${turn}-button`).disabled = true
+                    
+
+                    turn = turn +1
+                    document.getElementById(`player-${turn}-button`).disabled = false
+                    
+                            }
+         
 
    } 
-    
+
+  
+   
+   rollBtn.disabled = true
+  
+
+  
+   if(turn == 1){
+       document.getElementById(`player-1-button`).disabled = false
+      
+   }else if (turn >1){
+    document.getElementById(`player-${turn}-button`).disabled = false
+   }
+   
+
+
+
+
    rollBtn.addEventListener("click", roll)
 
    
 
-   const scoreTracker = () => {
-    console.log("the scoreTracker works too")
-       
-    if(diceImage.id.src == "./img/dice1.png"){  score = score +1 
-        
-   }
-
-  
-   }
-
-
-   rollBtn.addEventListener("click", scoreTracker)
+   
     
         }
        
