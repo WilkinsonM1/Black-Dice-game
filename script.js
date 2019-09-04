@@ -93,7 +93,8 @@ const submit = () => {
                    
             
                     
-                    } else  {console.log(`Player ${turn} has lost`)
+                    } else  {
+                        alert(`Player ${turn} has lost`)
                     document.getElementById(`player-${turn}-button`).className = "loser"
                     document.getElementById(`player-${turn}-button`).style.display = "none"
 
@@ -176,4 +177,3 @@ window.addEventListener("keypress", () => {
 playerNumber.addEventListener("click", () => {
     playerNumber.value = ""
 })
-
