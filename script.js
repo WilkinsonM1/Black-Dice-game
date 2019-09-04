@@ -62,14 +62,42 @@ const submit = () => {
 
             if( random != 0){
             playerScore.innerHTML = random+1 + Number(playerScore.innerHTML)
+            if(playerScore.innerHTML >= 21)
+            {
+                alert(`Player ${turn} has won! Congratulations to you lucky gambler.`)
+                gameStart()
+            }
                
             console.log(turn) 
             
             
             // document.getElementById(`player-${turn}`).disabled = false
+            
 
+            if(turn < playerNumber.value){
+                
+                 
+                        document.getElementById(`player-${turn}-button`).disabled = true
+                        
+                        document.getElementById(`player-${turn+1}-button`).disabled = false 
+                        turn = turn + 1 
+                       
+                       
+                    } else { 
+                        document.getElementById(`player-${turn}-button`).disabled = true 
+                        turn = 1
+                        document.getElementById(`player-${turn}-button`).disabled = false 
+                    
+                    }
+                     
+                   
+            
+                    
+                    } else  {console.log(`Player ${turn} has lost`)
+                    document.getElementById(`player-${turn}-button`).className = "loser"
+                    document.getElementById(`player-${turn}-button`).style.display = "none"
 
-            if(turn < playerNumber.value ){
+                    if(turn < playerNumber.value ){
                 
                  
                         document.getElementById(`player-${turn}-button`).disabled = true 
@@ -84,17 +112,15 @@ const submit = () => {
                     
                     }
                      
-                   
-                
                     
-                    } else  {console.log(`Player ${turn} has lost`)
-                    document.getElementById(`player-${turn}-button`).disabled = true
-                    
-
-                    turn = turn +1
-                    document.getElementById(`player-${turn}-button`).disabled = false
                     
                             }
+                            for(i = 1; i < playerNumber.value; i++)
+                            if(document.getElementById(`player-${turn}-button`).style.display == "none"){
+                                document.getElementById(`player-${turn+i}-button`).disabled = false 
+                        turn = turn + 1 
+                            }
+
          
 
    } 
@@ -112,6 +138,10 @@ const submit = () => {
     document.getElementById(`player-${turn}-button`).disabled = false
    }
    
+//    if(diceImage.src  = "./img/dice1.png" == true){
+//        rollBtn.disabled = true
+                    
+// }
 
 
 
@@ -146,10 +176,4 @@ window.addEventListener("keypress", () => {
 playerNumber.addEventListener("click", () => {
     playerNumber.value = ""
 })
-
-
-
-
-
-
 
